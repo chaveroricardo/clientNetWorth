@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 152.293 152.293">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Artboard_10);
+      }
+
+      .cls-2 {
+        fill: #3fbd53;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-Artboard_10">
+      <rect width="152.293" height="152.293"/>
+    </clipPath>
+  </defs>
+  <g id="Artboard_10" data-name="Artboard – 10" class="cls-1">
+    
+    <g id="Group_111" data-name="Group 111" transform="translate(16784.014 5388.319)">
+      <g id="Group_71" data-name="Group 71" transform="translate(-16752.854 -5371.753)">
+        <path id="Path_135" data-name="Path 135" class="cls-2" d="M848.7,24.8,830.3,6.4V22.626a2.114,2.114,0,0,0,2.123,2.123H848.7Z" transform="translate(-761.813 -3.381)"/>
+        <rect id="Rectangle_21" data-name="Rectangle 21" class="cls-2" width="17.216" height="17.216" transform="translate(14.999 85.515)"/>
+        <rect id="Rectangle_22" data-name="Rectangle 22" class="cls-2" width="17.216" height="17.216" transform="translate(14.999 55.564)"/>
+        <rect id="Rectangle_23" data-name="Rectangle 23" class="cls-2" width="17.216" height="17.216" transform="translate(14.999 25.754)"/>
+        <path id="Path_136" data-name="Path 136" class="cls-2" d="M755.757,25.659a6.421,6.421,0,0,1-6.415-6.415V0H691.515A6.421,6.421,0,0,0,685.1,6.415V113.438a6.421,6.421,0,0,0,6.415,6.415H768.54a6.421,6.421,0,0,0,6.415-6.415V25.706h-19.2Zm-59.95,0a4.308,4.308,0,0,1,4.292-4.292h17.122a4.249,4.249,0,0,1,4.245,3.773V42.923h.047a4.28,4.28,0,0,1-4.292,4.151H700.1a4.308,4.308,0,0,1-4.292-4.292Zm25.706,77.072a4.308,4.308,0,0,1-4.292,4.292H700.1a4.308,4.308,0,0,1-4.292-4.292V85.609a4.308,4.308,0,0,1,4.292-4.292h17.122a4.261,4.261,0,0,1,4.2,3.4V99.524h.094v3.207Zm0-29.951a4.308,4.308,0,0,1-4.292,4.292H700.1a4.308,4.308,0,0,1-4.292-4.292V55.658a4.308,4.308,0,0,1,4.292-4.292h17.122a4.3,4.3,0,0,1,4.292,4.056v13.4h0ZM760,107.023H738.588v-4.292H760Zm0-12.877H738.588V89.854H760Zm0-17.122H738.588V72.733H760Zm0-12.83H738.588V59.9H760Zm0-17.122H738.588V42.781H760Zm0-12.83H738.588V29.951H760Z" transform="translate(-685.1)"/>
+      </g>
+    </g>
+  </g>
+</svg>
