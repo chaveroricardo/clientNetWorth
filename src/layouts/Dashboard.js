@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import Settings from "../components/Settings";
 
 const Dashboard = ({ children }) => (
+  
   <React.Fragment>
     <Wrapper>
       <Sidebar />
