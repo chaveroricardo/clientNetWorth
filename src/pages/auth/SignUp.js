@@ -21,18 +21,6 @@ class SignUp extends Component {
     this.service = new AuthService();
   }
 
-  // constructor (props){
-  //   super(props)
-  //   this.state = { loggedInUser: null};
-  // }
-
-  // getTheUser= (userObj) => {
-  //   this.setState({
-  //     loggedInUser: userObj
-  //   })
-  // }
-  // handleChange() and handleSubmit() will be added here
-
   handleFormSubmit = (event) => {
     event.preventDefault();
     const username = this.state.username;

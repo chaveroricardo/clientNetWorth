@@ -89,11 +89,9 @@ class SignIn extends Component {
               </small>
             </FormGroup>
             <div className="text-center mt-3">
-              <Link to="/dashboard/default">
-                <Button type="submit" value="SignIn" color="primary" size="lg">
+                <Button href="https://networth.mx/saludfinanciera/" type="submit" value="SignIn" color="light" size="lg">
                   Entrar
                 </Button>
-              </Link>
             </div>
           </Form>
         </div>

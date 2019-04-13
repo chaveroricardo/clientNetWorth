@@ -679,7 +679,7 @@ class Salud extends Component {
                     </p>
                   </div>
                   <fieldset>
-                    <div className="bloques--reticula__renglon" style="padding: 1rem;">
+                    <div className="bloques--reticula__renglon" style={"padding: 1rem";}>
                       <input type="text" placeholder="Nombre" id="nombre" name="nombre" className="rendimiento__input bloque--full" required />
                       <input type="email" placeholder="Email" id="email" name="email" className="rendimiento__input bloque--mitad" required />
                       <input type="text" placeholder="Teléfono" id="telefono" name="telefono" className="rendimiento__input bloque--mitad" required />
