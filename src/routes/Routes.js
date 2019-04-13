@@ -11,6 +11,8 @@ import LandingLayout from "../layouts/Landing";
 import AuthLayout from "../layouts/Auth";
 
 import ScrollToTop from "../components/ScrollToTop";
+import SignUp from "../pages/auth/SignUp";
+
 
 
 const ChildRoutes = ({ layout: Layout, routes }) => (
@@ -62,6 +64,14 @@ const Routes = () => (
             <ChildRoutes layout={AuthLayout} routes={pageRoutes} />
           )}
         />
+        <Route
+         path="/auth/sign-up"
+         exact
+         component={() => (
+           <SignUp layout={AuthLayout} routes={pageRoutes} />
+         )}
+         render={() => <SignUp getUser={this.getTheUser}/>}
+         />
 
         {/* Dashboard routes */}
         <Route

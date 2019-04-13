@@ -21,9 +21,16 @@ class SignUp extends Component {
     this.service = new AuthService();
   }
 
-  componentDidMount(){
-    console.log(this.props)
-  }
+  // constructor (props){
+  //   super(props)
+  //   this.state = { loggedInUser: null};
+  // }
+
+  // getTheUser= (userObj) => {
+  //   this.setState({
+  //     loggedInUser: userObj
+  //   })
+  // }
   // handleChange() and handleSubmit() will be added here
 
   handleFormSubmit = (event) => {
@@ -61,16 +68,17 @@ class SignUp extends Component {
         <CardBody>
           <div className="m-sm-4">
           <div className="text-center">
-            <img
+           <Link to={"/"}>
+           <img
               src={logo}
               alt="Net Worth"
               className="img-fluid rounded-circle"
               width="132"
               height="132"
             />
+            </Link>
           </div>
-          <form onSubmit={this.handleFormSubmit}>
-            <Form>
+            <Form onSubmit={this.handleFormSubmit}>
               <FormGroup>
                 <Label>Email</Label>
                 <Input
@@ -102,7 +110,6 @@ class SignUp extends Component {
                   </Button> 
               </div>
             </Form>
-            </form>
           </div>
         </CardBody>
       </Card>

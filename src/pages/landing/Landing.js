@@ -93,18 +93,7 @@ const Footer = () => (
 );
 
 class Landing extends React.Component {
-  constructor (props){
-    super(props)
-    this.state = { loggedInUser: null};
-  }
-
-  getTheUser= (userObj) => {
-    this.setState({
-      loggedInUser: userObj
-    })
-  }
-
-  componentWillMount() {
+    componentWillMount() {
     const { dispatch } = this.props;
     dispatch(enableClassicTheme());
   }

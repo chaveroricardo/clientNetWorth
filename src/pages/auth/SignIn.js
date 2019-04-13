@@ -52,13 +52,15 @@ class SignIn extends Component {
       <CardBody>
         <div className="m-sm-4">
           <div className="text-center">
-            <img
+          <Link to={"/"}>
+           <img
               src={logo}
               alt="Net Worth"
               className="img-fluid rounded-circle"
               width="132"
               height="132"
             />
+            </Link>
           </div>
           <Form onSubmit={this.handleFormSubmit}> 
             <FormGroup >
