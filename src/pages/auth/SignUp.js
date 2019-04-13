@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import AuthService from '../../components/auth/auth-service';
+// import AuthService from '../../components/auth/auth-service';
+import { userActions } from '../../redux/actions/user.actions';
+import { connect } from 'react-redux';
 
 import {
   Button,
@@ -14,47 +16,76 @@ import {
 
 import logo from "../../assets/img/logonwc.png";
 
-class SignUp extends Component {
-  constructor(props){
-    super(props);
-    this.state = { username: '', password: '' };
-    this.service = new AuthService();
-  }
 
-  // constructor (props){
-  //   super(props)
-  //   this.state = { loggedInUser: null};
+class SignUp extends React.Component {
+  // constructor(props){
+  //   super(props);
+  //   this.state = { username: '', password: '' };
+  //   this.service = new AuthService();
   // }
 
-  // getTheUser= (userObj) => {
-  //   this.setState({
-  //     loggedInUser: userObj
+  // // handleChange() and handleSubmit() will be added here
+
+  // handleFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   const username = this.state.username;
+  //   const password = this.state.password;
+  
+  //   this.service.signup(username, password)
+  //   .then( response => {
+  //       this.setState({
+  //           username: "", 
+  //           password: "",
+  //       });
+  //       // this.props.getUser(response)
   //   })
+  //   .catch( error => console.log(error) )
   // }
-  // handleChange() and handleSubmit() will be added here
+  
+  // handleChange = (event) => {  
+  //   const {name, value} = event.target;
+  //   this.setState({[name]: value});
+  // }
 
-  handleFormSubmit = (event) => {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        user: {
+            username: '',
+            password: ''
+        },
+        submitted: false
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+}
+
+handleChange(event) {
+    const { name, value } = event.target;
+    const { user } = this.state;
+    this.setState({
+        user: {
+            ...user,
+            [name]: value
+        }
+    });
+}
+
+handleSubmit(event) {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
-  
-    this.service.signup(username, password)
-    .then( response => {
-        this.setState({
-            username: "", 
-            password: "",
-        });
-        this.props.getUser(response)
-    })
-    .catch( error => console.log(error) )
-  }
-  
-  handleChange = (event) => {  
-    const {name, value} = event.target;
-    this.setState({[name]: value});
-  }
 
-  render(){
+    this.setState({ submitted: true });
+    const { user } = this.state;
+    const { dispatch } = this.props;
+    if (user.username && user.password) {
+        dispatch(userActions.register(user));
+    }
+}
+    render(){
+      const { registering  } = this.props;
+      const { user, submitted } = this.state;
     return(
       <React.Fragment>
       <div className="text-center mt-4">
@@ -78,28 +109,34 @@ class SignUp extends Component {
             />
             </Link>
           </div>
-            <Form onSubmit={this.handleFormSubmit}>
-              <FormGroup>
+            <Form onSubmit={this.handleSubmit}>
+              <FormGroup className={'form-group' + (submitted && !user.username ? ' has-error' : '')}>
                 <Label>Email</Label>
                 <Input
                   bsSize="lg"
                   type="email"
                   name="username"
                   placeholder="Ingresa tu correo"
-                  value={this.state.username}
-                  onChange={ e => this.handleChange(e)}
+                  value={user.name}
+                  onChange={this.handleChange}
                 />
+                {submitted && !user.username &&
+                            <div className="help-block">Username is required</div>
+                }
               </FormGroup>
-              <FormGroup>
+              <FormGroup className={'form-group' + (submitted && !user.password ? ' has-error' : '')}>
                 <Label>Contraseña</Label>
                 <Input
                   bsSize="lg"
                   type="password"
                   name="password"
                   placeholder="Ingresa su contraseña"
-                  value={this.state.password}
-                  onChange={ e => this.handleChange(e)} 
+                  value={user.password}
+                  onChange={this.handleChange} 
                 />
+                {submitted && !user.password &&
+                            <div className="help-block">Password is required</div>
+                        }
               </FormGroup>
               <small>
                 <Link to={"/auth/sign-in"}>¿Ya tienes una cuenta?</Link>
@@ -108,6 +145,7 @@ class SignUp extends Component {
                   <Button type="submit" value="SignUp" color="primary" size="lg">
                     Inscribirme
                   </Button> 
+                  {registering}
               </div>
             </Form>
           </div>
@@ -118,6 +156,12 @@ class SignUp extends Component {
   }
 }
 
+function mapStateToProps(state) {
+    const { registering } = state.registration;
+    return {
+        registering
+  };
+}
 
-
-export default SignUp;
+const connectedSignUp = connect(mapStateToProps)(SignUp);
+export { connectedSignUp as SignUp };

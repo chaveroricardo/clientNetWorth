@@ -17,3 +17,4 @@ export function disableBoxedLayout() {
     type: types.LAYOUT_BOXED_DISABLE
   };
 }
+

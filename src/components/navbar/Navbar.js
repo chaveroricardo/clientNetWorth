@@ -40,10 +40,10 @@ class Navbar extends Component {
     } else {
       return ( 
         <nav className="nav-style">
-          {/* <ul> */}
-            {/* <li><Link to='/' style={{ textDecoration: 'none' }}>Login</Link></li> */}
-            {/* <li><Link to='/auth/sign-up' style={{ textDecoration: 'none' }}>Signup</Link></li> */}
-          {/* </ul> */}
+          <ul>
+            <li><Link to='/' style={{ textDecoration: 'none' }}>Login</Link></li>
+            <li><Link to='/auth/sign-up' style={{ textDecoration: 'none' }}>Signup</Link></li>
+          </ul>
         </nav>
       )
     }

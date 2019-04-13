@@ -3,6 +3,8 @@ import { Link} from "react-router-dom";
 import { connect } from "react-redux";
 import { enableClassicTheme } from "../../redux/actions/themeActions";
 
+import { history } from '../../redux/store/history';
+
 
 import {
   Button,
@@ -14,8 +16,6 @@ import {
 
 
 import logowebnwc from "../../assets/img/photos/logoweb.png";
-
-
 
 const Intro = () => (
   <section className="landing-intro pt-6 pt-xl-10">
