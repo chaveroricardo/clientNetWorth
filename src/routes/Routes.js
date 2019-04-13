@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   landing as landingRoutes,
   dashboard as dashboardRoutes,
@@ -11,6 +11,7 @@ import LandingLayout from "../layouts/Landing";
 import AuthLayout from "../layouts/Auth";
 
 import ScrollToTop from "../components/ScrollToTop";
+import SignUp from "../pages/auth/SignUp";
 
 
 
@@ -42,14 +43,6 @@ const ChildRoutes = ({ layout: Layout, routes }) => (
   </Layout>
 );
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-      localStorage.getItem('user')
-          ? <Component {...props} />
-          : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-  )} />
-)
-
 const Routes = () => (
   <Router>
     <ScrollToTop>
@@ -71,14 +64,21 @@ const Routes = () => (
             <ChildRoutes layout={AuthLayout} routes={pageRoutes} />
           )}
         />
-  
+        <Route
+         path="/auth/sign-up"
+         exact
+         component={() => (
+           <SignUp layout={AuthLayout} routes={pageRoutes} />
+         )}
+         render={() => <SignUp getUser={this.getTheUser}/>}
+         />
 
         {/* Dashboard routes */}
         <Route
           path="/*"
           exact
           component={() => (
-            <PrivateRoute layout={DashboardLayout} routes={dashboardRoutes} />
+            <ChildRoutes layout={DashboardLayout} routes={dashboardRoutes} />
           )}
         />
         

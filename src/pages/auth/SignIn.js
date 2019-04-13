@@ -89,11 +89,11 @@ class SignIn extends Component {
               </small>
             </FormGroup>
             <div className="text-center mt-3">
-              {/* <Link to="/dashboard/default"> */}
+              <Link to="/dashboard/default">
                 <Button type="submit" value="SignIn" color="primary" size="lg">
                   Entrar
                 </Button>
-              {/* </Link> */}
+              </Link>
             </div>
           </Form>
         </div>
