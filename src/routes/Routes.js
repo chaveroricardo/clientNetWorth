@@ -11,7 +11,6 @@ import LandingLayout from "../layouts/Landing";
 import AuthLayout from "../layouts/Auth";
 
 import ScrollToTop from "../components/ScrollToTop";
-import { history } from '../redux/store/history';
 
 
 

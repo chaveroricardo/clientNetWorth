@@ -1,10 +1,9 @@
 import { userConstants } from '../constants';
 import { userService } from '../../services/user.service';
-import { history } from '../store/history';
-import { alertActions } from '../actions/alert.actions';
+import { history } from '../store';
 
 export const userActions = {
-    register,
+    signup,
     login,
     logout
 
@@ -22,7 +21,6 @@ function login(username, password) {
                 },
                 error => {
                     dispatch(failure(error.toString()));
-                    dispatch(alertActions.error(error.toString()));
                 }
             );
     };
@@ -37,7 +35,7 @@ function logout() {
     return { type: userConstants.LOGOUT };
 }
 
-function register(user) {
+function signup(user) {
     return dispatch => {
         dispatch(request(user));
 
@@ -46,11 +44,9 @@ function register(user) {
                 user => { 
                     dispatch(success());
                     history.push('/login');
-                    dispatch(alertActions.success('Registration successful'));
                 },
                 error => {
                     dispatch(failure(error.toString()));
-                    dispatch(alertActions.error(error.toString()));
                 }
             );
     };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 // import AuthService from '../../components/auth/auth-service';
 import { userActions } from '../../redux/actions/user.actions';
@@ -18,7 +18,36 @@ import logo from "../../assets/img/logonwc.png";
 
 
 class SignUp extends React.Component {
-   constructor(props) {
+  // constructor(props){
+  //   super(props);
+  //   this.state = { username: '', password: '' };
+  //   this.service = new AuthService();
+  // }
+
+  // // handleChange() and handleSubmit() will be added here
+
+  // handleFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   const username = this.state.username;
+  //   const password = this.state.password;
+  
+  //   this.service.signup(username, password)
+  //   .then( response => {
+  //       this.setState({
+  //           username: "", 
+  //           password: "",
+  //       });
+  //       // this.props.getUser(response)
+  //   })
+  //   .catch( error => console.log(error) )
+  // }
+  
+  // handleChange = (event) => {  
+  //   const {name, value} = event.target;
+  //   this.setState({[name]: value});
+  // }
+
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -51,7 +80,7 @@ handleSubmit(event) {
     const { user } = this.state;
     const { dispatch } = this.props;
     if (user.username && user.password) {
-        dispatch(userActions.signup(user));
+        dispatch(userActions.register(user));
     }
 }
     render(){
