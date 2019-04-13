@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import AuthService from '../../components/auth/auth-service';
+// import AuthService from '../../components/auth/auth-service';
+import { userActions } from '../../redux/actions/user.actions';
 import { connect } from 'react-redux';
 
 import {
