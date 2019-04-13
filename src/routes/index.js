@@ -20,7 +20,7 @@ import Landing from "../pages/landing/Landing";
 
 // Auth
 import SignIn from "../pages/auth/SignIn";
-import SignUp from "../pages/auth/SignUp";
+import {SignUp} from "../pages/auth/SignUp";
 import ResetPassword from "../pages/auth/ResetPassword";
 import Page404 from "../pages/auth/Page404";
 import Page500 from "../pages/auth/Page500";

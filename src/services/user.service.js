@@ -1,36 +1,72 @@
-import axios from 'axios';
 
-class UserService {
-    constructor() {
-      let service = axios.create({
-        baseURL: `${process.env.REACT_APP_API_URL}`,
-        withCredentials: true
-      });
-      this.service = service;
-    }
-  
-    signup = (username, password) => {
-      return this.service.post('/signup', {username, password})
-      .then(response => response.data)
-      .catch(e => console.log(e))
-    }
-  
-    loggedin = () => {
-      return this.service.get('/loggedin')
-      .then(response => response.data)
-    }
-  
-    login = (username, password) => {
-      return this.service.post('/login', {username, password})
-      .then(response => response.data)
-    }
+export const userService = {
+    login,
+    logout,
+    register,
+};
+
+function login(username, password) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    };
+
+    return fetch(`${process.env.REACT_APP_API_URL}/login`, requestOptions)
+        .then(handleResponse)
+        .then(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('user', JSON.stringify(user));
+
+            return user;
+        });
+}
+
+function logout() {
+    // remove user from local storage to log user out
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify()
+  };
+    return fetch(`${process.env.REACT_APP_API_URL}/logout`, requestOptions)
+    .then(handleResponse)
+    .then(user => {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.removeItem('user');
+
+        return user;
+    });
     
-    logout = () => {
-      return this.service.post('/logout', {})
-      .then(response => response.data)
-    }
-  }
-  
-  
-  
-  export default UserService;
+}
+
+function register(user) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+    };
+
+    return fetch(`${process.env.REACT_APP_API_URL}/signup`, requestOptions).then(handleResponse);
+}
+
+
+// prefixed function name with underscore because delete is a reserved word in javascript
+
+function handleResponse(response) {
+    return response.text().then(text => {
+        const data = text && JSON.parse(text);
+        if (!response.ok) {
+            if (response.status === 401) {
+                // auto logout if 401 response returned from api
+                logout();
+                location.reload(true);
+            }
+
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+
+        return data;
+    });
+}

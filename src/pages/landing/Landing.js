@@ -3,8 +3,6 @@ import { Link} from "react-router-dom";
 import { connect } from "react-redux";
 import { enableClassicTheme } from "../../redux/actions/themeActions";
 
-import { history } from '../../redux/store/history';
-
 
 import {
   Button,
